@@ -157,3 +157,72 @@ int main(void)
 函数原型是一种声明形式，告知编译器正在使用某函数，因此函数原型也被称为**函数声明（function declaration）**  
 **注意：何时执行butler()函数取决于它在main()中被调用的位置，而不是butler()的定义在文件中的位置。无论main()在程序文件中处于什么位置，所有的C程序都从main()开始执行**
 
+## 2.5 调试程序
+
+程序的错误通常叫作bug，找出并修正错误的过程叫作**调试（debug）**
+
+```c
+//有错误的程序
+#include<stdio.h>
+int main(void)
+(
+    int n,int n2,int n3; 
+    
+ 	/*该程序有多处错误
+    n = 5;
+    n2 = n * n;
+    n3 = n2 * n2;
+    printf("n = %d, n squared = %d, n cubed = %d\n",n,n2,n3)
+    
+    return 0;
+)
+```
+
+#### 语法错误
+
+**C语言的语法错误指的是，把有效的C符号放在错误的地方**   
+
+1. main()函数体使用圆括号代替花括号。这就是把C符号用错了地方
+
+2. 变量声明应该这样写:
+   `int n, n2 ,n3;`
+   或者：
+
+   ```c
+   int n;
+   int n2;
+   int n3;
+   ```
+
+3. main()中的注释末尾漏掉了`*/`（另一种修改方案是，用//替换/*）
+
+4. printf()语句末尾漏掉了分号        
+
+#### 语义错误
+
+**语义错误是指意思上的错误**
+
+`n3 = n2 * n2;`
+
+此处，n3愿意表示n的3次方，但是代码中的n3被设置成了n的4次方（n2 = n * n）  
+**程序无法检测语义错误，因为这类错误并未违反C语言的规则
+
+## 2.6 关键字和保留标识符
+
+<center>ISO C关键字</center>
+
+| auto  | extern | short | while |
+| -----| ------ | ----- | ----- |
+| break | float | signed | _Alignas |
+| case | for | sizeof | _Alignof |
+| char | goto | static | _Atomic |
+| const | if | struct | _Bool |
+| continue | inline | switch | _Complex |
+| default | int | typedef | _Generic |
+| do | long | union | _Imaginary |
+| double | register | unsigned | _Noreturn |
+| else | restrict | void | _Static_assery |
+| enum | return | volatile | _Thread_local |
+
+**关键字是C语言的词汇。不能用它们作为标识符（如，变量名）。许多关键字用于指定不同的类型，如int**  
+**保留标识符（reserved identifier)包括那些以下划线字符开头的标识符和标准库函数名，如printf()**
