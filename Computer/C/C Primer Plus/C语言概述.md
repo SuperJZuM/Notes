@@ -113,5 +113,47 @@ int main(void)
 
 #### 乘法
 
-1
-2
+*表示乘法  
+`feet = 6 * fathoms;`的意思是“查找变量fathoms的值，用6乘以该值，并把计算结果赋给变量feet”
+
+#### 打印多个值
+
+```c
+输出结果是：
+    There are 12 feet in 2 fathoms!
+    Yes,I said 12 feet!
+```
+
+第一个printf()中进行了两次替换，双引号后面的第一个变量（feet）替换了双引号中的第1个%d；双引号后面的第2个变量（fathoms）替换了双引号中的第2个%d。**待输出的变量列于双引号后面，变量之间要用逗号隔开**
+
+## 2.4 多个函数
+
+ ```c
+ //一个文件中包含两个函数
+ #include<stdio.h>
+ void butler(void);//ANSI/ISO C函数原型
+ int main(void)
+ {
+     printf("I will summon the butler function.\n");
+     butler();
+     printf("Yes.Bring me some tea and writeable DVDs.\n");
+     
+     return 0;
+ }
+ void butler(void) //函数定义开始
+ {
+     printf("You rang,sir?\n");
+ }
+ ```
+
+```c
+该程序输出结果如下：
+    I will summon the butler function.
+    You rang,sir?
+    Yes.Bring me some tea and writeable DVDs.
+```
+
+`butler()`函数被调用了三次。第一次是函数原型（prototype），告知编译器在程序中要使用该函数；第2次是以函数调用（function call）的形式出现在main()中；最后一次出现在函数定义（function definition）中；**函数定义即是函数本身的源代码**  
+函数原型是一种声明形式，告知编译器正在使用某函数，因此函数原型也被称为**函数声明（function declaration）**  
+**注意：何时执行butler()函数取决于它在main()中被调用的位置，而不是butler()的定义在文件中的位置。无论main()在程序文件中处于什么位置，所有的C程序都从main()开始执行**
+
