@@ -2,10 +2,10 @@
 
 ## 2.1 简单的C程序
 ```c
-#include<stdio.h>
-int main(void)
+#include<stdio.h>      //预处理指令
+int main(void)        //main()函数，它是程序的入口
 {
-    int num;        //定义一个名为num的变量
+    int num;        //定义一个名为num的变量，num是一个整型
     num = 1;        //为num赋一个值
 
     printf("I am a simple");//使用printf()函数
@@ -211,8 +211,9 @@ int main(void)
 
 <center>ISO C关键字</center>
 
-| auto  | extern | short | while |
+| | | |  |
 | -----| ------ | ----- | ----- |
+|auto  |extern |short|while |
 | break | float | signed | _Alignas |
 | case | for | sizeof | _Alignof |
 | char | goto | static | _Atomic |
